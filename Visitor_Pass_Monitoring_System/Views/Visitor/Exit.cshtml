@@ -1,0 +1,28 @@
+﻿@model Visitor_Pass_Monitoring_System.Models.Visitor
+
+@{
+    ViewData["Title"] = "Record Exit";
+}
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-danger text-white py-3">
+                <h4 class="mb-0">Record Visitor Exit</h4>
+            </div>
+            <div class="card-body p-4 bg-white">
+                <p class="fs-5">Are you sure you want to record the exit for <strong>@Model.FirstName @Model.LastName</strong> (Pass: @Model.PassNumber)?</p>
+
+                <form asp-action="Exit" method="post">
+                    <div asp-validation-summary="All" class="alert alert-danger mb-3"></div>
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-danger">Confirm Exit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

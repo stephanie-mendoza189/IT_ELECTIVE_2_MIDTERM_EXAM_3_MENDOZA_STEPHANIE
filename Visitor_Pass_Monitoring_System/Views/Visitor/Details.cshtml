@@ -1,0 +1,60 @@
+﻿@model Visitor_Pass_Monitoring_System.Models.Visitor
+
+@{
+    ViewData["Title"] = "Visitor Details";
+}
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-dark text-white py-3">
+                <h4 class="mb-0">Visitor Details - @Model.PassNumber</h4>
+            </div>
+            <div class="card-body p-4 bg-white">
+                <dl class="row">
+                    <dt class="col-sm-4 fw-bold">Full Name:</dt>
+                    <dd class="col-sm-8">@Model.FirstName @Model.LastName</dd>
+
+                    <dt class="col-sm-4 fw-bold">Company:</dt>
+                    <dd class="col-sm-8">@Model.Company</dd>
+
+                    <dt class="col-sm-4 fw-bold">Contact Number:</dt>
+                    <dd class="col-sm-8">@Model.ContactNumber</dd>
+
+                    <dt class="col-sm-4 fw-bold">Person To Visit:</dt>
+                    <dd class="col-sm-8">@Model.PersonToVisit</dd>
+
+                    <dt class="col-sm-4 fw-bold">Department:</dt>
+                    <dd class="col-sm-8">@Model.Department</dd>
+
+                    <dt class="col-sm-4 fw-bold">Purpose:</dt>
+                    <dd class="col-sm-8">@Model.Purpose</dd>
+
+                    <dt class="col-sm-4 fw-bold">Entry Date & Time:</dt>
+                    <dd class="col-sm-8">@Model.EntryDateTime</dd>
+
+                    <dt class="col-sm-4 fw-bold">Exit Date & Time:</dt>
+                    <dd class="col-sm-8">@(Model.ExitDateTime.HasValue ? Model.ExitDateTime.ToString() : "Still Inside")</dd>
+
+                    <dt class="col-sm-4 fw-bold">Status:</dt>
+                    <dd class="col-sm-8">@Model.Status</dd>
+
+                    <dt class="col-sm-4 fw-bold">Valid ID Presented:</dt>
+                    <dd class="col-sm-8">@Model.ValidIdPresented</dd>
+
+                    <dt class="col-sm-4 fw-bold">Notes:</dt>
+                    <dd class="col-sm-8">@Model.Notes</dd>
+                </dl>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+
+                    @if (Model.Status == "Inside Building")
+                    {
+                        <a asp-action="Exit" asp-route-id="@Model.Id" class="btn btn-danger">Record Exit</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
